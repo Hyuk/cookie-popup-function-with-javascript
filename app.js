@@ -12,7 +12,7 @@ function getNow() {
   return now.getTime();
 }
 
-if(getCookie("anr-bc-cookie") == "agree") {
+if(getCookie("website-cookie") == "agree") {
   cookieBlock.style.display = "none";
 } else {
   cookieBlock.style.display = "block";
@@ -24,7 +24,7 @@ cookiePopupClose.onclick = function() {
   var minutes = 60 * 24 * 30 * 6;
   now.setTime(now.getTime() + (minutes * 60 * 1000));
   cookievalue = "agree;";
-  document.cookie = "anr-bc-cookie=" + cookievalue + "; expires=" + now.toUTCString() + ";";
+  document.cookie = "website-cookie=" + cookievalue + "; expires=" + now.toUTCString() + ";";
 }
 
 body = document.getElementsByTagName('body')[0];
