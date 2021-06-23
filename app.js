@@ -1,5 +1,6 @@
 var cookieBlock = document.getElementsByClassName("use-of-cookies")[0];
 var cookiePopupClose = document.getElementById('cookie-popup-close');
+var body = body = document.getElementsByTagName('body')[0];
 
 function getCookie(name) {
   function escape(s) { return s.replace(/([.*+?\^$(){}|\[\]\/\\])/g, '\\$1'); }
@@ -12,10 +13,13 @@ function getNow() {
   return now.getTime();
 }
 
-if(getCookie("website-cookie") == "agree") {
+if(getCookie("anr-bc-cookie") == "agree") {
   cookieBlock.style.display = "none";
 } else {
   cookieBlock.style.display = "block";
+  if(window.innerWidth == body.clientWidth) {
+    cookieBlock.setAttribute("style", "display:block; width:100%;");
+  }
 }
 
 cookiePopupClose.onclick = function() {
@@ -24,10 +28,5 @@ cookiePopupClose.onclick = function() {
   var minutes = 60 * 24 * 30 * 6;
   now.setTime(now.getTime() + (minutes * 60 * 1000));
   cookievalue = "agree;";
-  document.cookie = "website-cookie=" + cookievalue + "; expires=" + now.toUTCString() + ";";
-}
-
-body = document.getElementsByTagName('body')[0];
-if (window.innerWidth == body.clientWidth) {
-  cookieBlock.setAttribute("style", "width:100%")
+  document.cookie = "anr-bc-cookie=" + cookievalue + "; expires=" + now.toUTCString() + ";";
 }
